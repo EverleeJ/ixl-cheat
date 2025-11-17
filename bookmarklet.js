@@ -1,17 +1,17 @@
-// NOTE:
-// - inject remote script into DOM to get correct answer
-// - possibly use nodebowl lib to run node js code
-
-// inject remote script into DOM
-function script_inject() {
-	const remote_script = document.createElement("script")  // create new script element
-	script.src = "https://github.com/EverleeJ/ixl-cheat/remote-script.js"
-	document.head.appendChild(remote_script)
-
+// inject script src from github into DOM, run script
+javascript: (() => {  // `javascript:` protocol for bookmarklet
+	// inject script
+	const script = document.createElement("script")  // create new script element
+	script.src = "https://github.com/EverleeJ/ixl-cheat/remote_script.js"
+	document.head.appendChild(script)  // insert element into DOM
+	
 	// when script executed, print message
 	script.onload = function() {
-		console.log("Injected script loaded and executed")
+		console.log("Script loaded and executed")
 	}
-}
+})();
 
-script_inject()
+
+javascript: (() => { const script = document.createElement("script"); script.src = "https://github.com/EverleeJ/ixl-cheat/remote_script.js"; document.head.appendChild(script); script.onload = function() { console.log("Script loaded and executed") } })();
+
+
